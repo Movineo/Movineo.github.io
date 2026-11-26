@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movine Odhiambo — Software Developer &amp; Systems Engineer</title>
+  <meta name="description" content="Movine Odhiambo — Software Developer & Systems Engineer based in Nairobi, Kenya (Open to Remote). Turning complex mathematical and infrastructure problems into fast, reliable software." />
+
+  <!-- Google Fonts: Plus Jakarta Sans (Headings), Inter (Body), JetBrains Mono (Metrics, Badges & Tags) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            alabaster: '#FAF9F6',
+            ink: '#0F172A',
+            slateSecondary: '#475569',
+            cobalt: '#143C6E',
+            emeraldBadge: '#059669',
+            borderLight: '#E2E8F0',
+            darkBg: '#0B1120',
+            darkCard: '#111827',
+            darkText: '#F8FAFC',
+            darkAccent: '#38BDF8',
+            darkBorder: '#1E293B',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Subtle Swiss-minimalist architectural grid backdrop */
+    .swiss-grid {
+      background-image: radial-gradient(rgba(15, 23, 42, 0.055) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .dark .swiss-grid {
+      background-image: radial-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Smooth transitions for lens panels and modal drawer */
+    .lens-panel {
+      transition: opacity 200ms ease, transform 200ms ease;
+    }
+    .modal-backdrop {
+      transition: opacity 220ms ease;
+    }
+    .modal-panel {
+      transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1), opacity 220ms ease;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      .lens-panel,
+      .modal-backdrop,
+      .modal-panel,
+      * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+
+  <!-- Immediate Theme Hydration (Defaults to Warm Alabaster Light Mode; Persists Selection) -->
+  <script>
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem('movine_portfolio_theme');
+        if (savedTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (err) {
+        // Safely fall back to light mode if storage is restricted
+      }
+    })();
+  </script>
+</head>
+<body class="bg-[#FAF9F6] text-[#0F172A] dark:bg-[#0B1120] dark:text-[#F8FAFC] font-sans antialiased selection:bg-[#143C6E] selection:text-white dark:selection:bg-[#38BDF8] dark:selection:text-[#0B1120] transition-colors duration-200">
+
+  <!-- Toast Notification Banner -->
+  <div id="toast-banner" role="status" aria-live="polite" class="fixed bottom-5 right-5 z-50 max-w-sm flex items-center gap-3 rounded-xl bg-[#0F172A] dark:bg-[#111827] text-[#F8FAFC] px-4 py-3 text-sm font-medium shadow-2xl border border-[#1E293B] opacity-0 translate-y-3 pointer-events-none transition-all duration-300">
+    <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#059669]/20 text-[#10B981] shrink-0">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+    </span>
+    <span id="toast-message">Copied to clipboard</span>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 1. STICKY MINIMAL HEADER                                              -->
+  <!-- ===================================================================== -->
+  <header class="sticky top-0 z-40 bg-[#FAF9F6]/90 dark:bg-[#0B1120]/90 backdrop-blur-md border-b border-[#E2E8F0] dark:border-[#1E293B]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 gap-4">
+        <!-- Monogram & Name -->
+        <a href="#top" class="flex items-center gap-3 group focus:outline-none">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-[#143C6E] dark:bg-[#38BDF8] text-white dark:text-[#0B1120] font-mono font-semibold text-xs tracking-tight shadow-xs group-hover:scale-105 transition-transform">
+            MO
+          </span>
+          <span class="font-display font-bold text-sm sm:text-base tracking-wider text-[#0F172A] dark:text-[#F8FAFC]">
+            MOVINE ODHIAMBO
+          </span>
+        </a>
+
+        <!-- Desktop Smooth-Scroll Anchor Links -->
+        <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-[#475569] dark:text-slate-300" aria-label="Primary Navigation">
+          <a href="#projects" class="hover:text-[#143C6E] dark:hover:text-[#38BDF8] transition-colors">Projects</a>
+          <a href="#experience" class="hover:text-[#143C6E] dark:hover:text-[#38BDF8] transition-colors">Experience</a>
+          <a href="#builder-log" class="hover:text-[#143C6E] dark:hover:text-[#38BDF8] transition-colors">Builder Log</a>
+          <a href="#stack" class="hover:text-[#143C6E] dark:hover:text-[#38BDF8] transition-colors">Stack</a>
+          <a href="#contact" class="hover:text-[#143C6E] dark:hover:text-[#38BDF8] transition-colors">Contact</a>
+        </nav>
+
+        <!-- Theme Toggle & Mobile Menu Button -->
+        <div class="flex items-center gap-2">
+          <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Toggle Light and Dark Mode"
+            class="inline-flex items-center gap-2 rounded-xl bg-[#FFFFFF] dark:bg-[#111827] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#0F172A] dark:text-[#F8FAFC] border border-[#E2E8F0] dark:border-[#1E293B] px-3 py-2 text-xs font-mono font-medium transition-colors cursor-pointer"
+          >
+            <!-- Sun Icon (shown when dark mode is active) -->
+            <svg class="w-4 h-4 hidden dark:block text-[#38BDF8]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="5" />
+              <path stroke-linecap="round" d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+            </svg>
+            <!-- Moon Icon (shown when light mode is active) -->
+            <svg class="w-4 h-4 block dark:hidden text-[#143C6E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+            <span class="hidden sm:inline dark:hidden">Dark</span>
+            <span class="hidden dark:sm:inline">Light</span>
+          </button>
+
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            aria-label="Open Navigation Menu"
+            class="md:hidden p-2.5 rounded-xl bg-[#FFFFFF] dark:bg-[#111827] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#0F172A] dark:text-[#F8FAFC] border border-[#E2E8F0] dark:border-[#1E293B] transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div id="mobile-menu" class="hidden md:hidden pb-4 pt-2 border-t border-[#E2E8F0] dark:border-[#1E293B]">
+        <nav class="flex flex-col space-y-1 text-sm font-medium text-[#475569] dark:text-slate-300" aria-label="Mobile Navigation">
+          <a href="#projects" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-[#FFFFFF] dark:hover:bg-[#111827] hover:text-[#143C6E] dark:hover:text-[#38BDF8]">Projects</a>
+          <a href="#experience" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-[#FFFFFF] dark:hover:bg-[#111827] hover:text-[#143C6E] dark:hover:text-[#38BDF8]">Experience</a>
+          <a href="#builder-log" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-[#FFFFFF] dark:hover:bg-[#111827] hover:text-[#143C6E] dark:hover:text-[#38BDF8]">Builder Log</a>
+          <a href="#stack" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-[#FFFFFF] dark:hover:bg-[#111827] hover:text-[#143C6E] dark:hover:text-[#38BDF8]">Stack</a>
+          <a href="#contact" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-[#FFFFFF] dark:hover:bg-[#111827] hover:text-[#143C6E] dark:hover:text-[#38BDF8]">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ===================================================================== -->
+    <!-- 2. 60-SECOND EXECUTIVE SNAPSHOT (HERO)                                -->
+    <!-- ===================================================================== -->
+    <section class="swiss-grid pt-12 pb-16 sm:pt-20 sm:pb-24 px-4 sm:px-6 lg:px-8 border-b border-[#E2E8F0] dark:border-[#1E293B]">
+      <div class="max-w-6xl mx-auto">
+        <!-- Availability Status Pill -->
+        <div class="inline-flex flex-wrap items-center gap-2.5 rounded-full bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] px-3.5 py-1.5 shadow-2xs mb-7">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#059669] opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#059669]"></span>
+          </span>
+          <span class="font-mono text-xs font-medium text-[#059669] dark:text-emerald-400">
+            Open to Software Development, Backend &amp; AI Engineering Roles &middot; Nairobi / Remote
+          </span>
+        </div>
+
+        <!-- Name & Role Title -->
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-[3.4rem] font-extrabold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] leading-[1.1] max-w-4xl mb-6">
+          Movine Odhiambo
+          <span class="block text-[#143C6E] dark:text-[#38BDF8] mt-1.5">
+            Software Developer &amp; Systems Engineer
+          </span>
+        </h1>
+
+        <!-- Plain-English Personal Narrative for Recruiters & Engineering Leaders -->
+        <p class="max-w-3xl text-base sm:text-lg text-[#475569] dark:text-slate-300 leading-relaxed mb-8">
+          I turn complex mathematical and infrastructure problems into fast, reliable software that teams can depend on. From building browser-based cloud training environments used by university developers to re-engineering data-heavy research models so they run in minutes instead of hours, I focus on clean architecture, measurable speed, and practical real-world impact.
+        </p>
+
+        <!-- Target Role Badges -->
+        <div class="mb-9">
+          <div class="font-mono text-[11px] font-semibold uppercase tracking-widest text-[#475569] dark:text-slate-400 mb-3">
+            Target Roles
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="inline-flex items-center rounded-xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
+              Software Development
+            </span>
+            <span class="inline-flex items-center rounded-xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
+              Backend Systems
+            </span>
+            <span class="inline-flex items-center rounded-xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
+              Cloud-Native &amp; DevOps
+            </span>
+            <span class="inline-flex items-center rounded-xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
+              AI &amp; Agentic Systems
+            </span>
+          </div>
+        </div>
+
+        <!-- Primary CTAs -->
+        <div class="flex flex-wrap items-center gap-3 mb-14">
+          <button
+            type="button"
+            onclick="copyTextToClipboard('movineee@gmail.com', 'Copied movineee@gmail.com to clipboard', this)"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#143C6E] hover:bg-[#1D4ED8] dark:bg-[#38BDF8] dark:hover:bg-sky-300 text-white dark:text-[#0B1120] font-display font-semibold text-sm px-5 py-3 shadow-xs transition-colors cursor-pointer"
+          >
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+            </svg>
+            <span class="btn-label">Copy Email (movineee@gmail.com)</span>
+          </button>
+
+          <a
+            href="https://github.com/Movineo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#FFFFFF] dark:bg-[#111827] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#0F172A] dark:text-[#F8FAFC] font-display font-semibold text-sm px-5 py-3 border border-[#E2E8F0] dark:border-[#1E293B] transition-colors"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+            <span>GitHub</span>
+          </a>
+
+          <a
+            href="https://linkedin.com/in/movine-odhiambo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#FFFFFF] dark:bg-[#111827] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#0F172A] dark:text-[#F8FAFC] font-display font-semibold text-sm px-5 py-3 border border-[#E2E8F0] dark:border-[#1E293B] transition-colors"
+          >
+            <svg class="w-4 h-4 text-[#143C6E] dark:text-[#38BDF8]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+
+        <!-- 3 Quantified Impact Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6">
+            <div class="font-mono text-2xl sm:text-3xl font-bold text-[#143C6E] dark:text-[#38BDF8] tracking-tight">
+              25+ Live Cloud Labs
+            </div>
+            <p class="text-sm text-[#475569] dark:text-slate-300 mt-2 leading-relaxed">
+              Self-hosted Red Hat UBI 9 &amp; OpenShift training sandbox built at JHUB Africa.
+            </p>
+          </div>
+
+          <div class="rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6">
+            <div class="font-mono text-2xl sm:text-3xl font-bold text-[#143C6E] dark:text-[#38BDF8] tracking-tight">
+              4 hrs &rarr; &lt;5 mins
+            </div>
+            <p class="text-sm text-[#475569] dark:text-slate-300 mt-2 leading-relaxed">
+              Java spatial simulation runtime reduced with 99% lower CPU overhead.
+            </p>
+          </div>
+
+          <div class="rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6">
+            <div class="font-mono text-2xl sm:text-3xl font-bold text-[#143C6E] dark:text-[#38BDF8] tracking-tight">
+              176+ Institutions Modeled
+            </div>
+            <p class="text-sm text-[#475569] dark:text-slate-300 mt-2 leading-relaxed">
+              Automated financial data extraction &amp; network risk analysis pipeline.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 3. FLAGSHIP PROJECTS WITH DUAL-LENS TOGGLE                            -->
+    <!-- ===================================================================== -->
+    <section id="projects" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#E2E8F0] dark:border-[#1E293B]">
+      <div class="max-w-6xl mx-auto">
+        <!-- Section Header & Dual-Lens Segmented Control -->
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+          <div>
+            <span class="font-mono text-xs font-semibold uppercase tracking-widest text-[#143C6E] dark:text-[#38BDF8]">
+              Selected Work
+            </span>
+            <h2 class="font-display text-2xl sm:text-4xl font-bold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight mt-2">
+              Flagship Projects
+            </h2>
+            <p class="text-sm sm:text-base text-[#475569] dark:text-slate-300 mt-2 max-w-2xl">
+              Toggle between plain-English business outcomes and deep architectural details across every project.
+            </p>
+          </div>
+
+          <!-- Dual-Lens Segmented Switch -->
+          <div class="inline-flex flex-col sm:flex-row rounded-2xl bg-slate-200/75 dark:bg-[#111827] p-1.5 border border-[#E2E8F0] dark:border-[#1E293B] self-start lg:self-end" role="group" aria-label="Project view mode">
+            <button
+              id="btn-mode-recruiter"
+              type="button"
+              onclick="setLensMode('recruiter')"
+              aria-pressed="true"
+              class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-display font-semibold transition-all cursor-pointer bg-[#FFFFFF] dark:bg-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] shadow-xs"
+            >
+              Recruiter Story (Plain English)
+            </button>
+            <button
+              id="btn-mode-engineering"
+              type="button"
+              onclick="setLensMode('engineering')"
+              aria-pressed="false"
+              class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-display font-semibold transition-all cursor-pointer text-[#475569] dark:text-slate-400 hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
+            >
+              Engineering Deep-Dive (Architecture &amp; Stack)
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Project Cards Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-7">
+          <!-- PROJECT 1: OpenQuest Enterprise -->
+          <article class="flex flex-col justify-between rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6 sm:p-8 hover:border-[#143C6E]/40 dark:hover:border-[#38BDF8]/40 transition-colors">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="font-mono text-xs font-medium text-[#143C6E] dark:text-[#38BDF8] bg-[#143C6E]/8 dark:bg-[#38BDF8]/10 px-2.5 py-1 rounded-lg">
+                  JHUB Africa &bull; Cloud Training Platform
+                </span>
+                <span class="font-mono text-xs text-[#475569] dark:text-slate-400">2026</span>
+              </div>
+
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-[#0F172A] dark:text-[#F8FAFC] mb-1">
+                OpenQuest Enterprise
+              </h3>
+              <p class="text-xs font-mono text-[#475569] dark:text-slate-400 mb-4">
+                Self-Hosted Cloud-Native &amp; OpenShift Training Platform
+              </p>
+
+              <!-- Recruiter Story View -->
+              <div class="lens-recruiter lens-panel space-y-3">
+                <p class="text-sm sm:text-base text-[#475569] dark:text-slate-300 leading-relaxed">
+                  University students often struggle to learn enterprise cloud infrastructure because paid cloud accounts are expensive and local setups break easily. I co-built a browser-based training platform where learners complete 25 guided cloud labs directly in their web browser—giving every student a safe, zero-setup workspace with instant automated grading and verifiable certificates.
+                </p>
+                <div class="rounded-xl bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] p-3.5 text-xs sm:text-sm text-[#475569] dark:text-slate-300">
+                  <strong class="text-[#0F172A] dark:text-[#F8FAFC]">Impact:</strong> Enabled 5 engineers to ship features in parallel and eliminated intermittent production login drops for student cohorts.
+                </div>
+              </div>
+
+              <!-- Engineering Deep-Dive View -->
+              <div class="lens-engineering lens-panel hidden space-y-3">
+                <p class="text-sm text-[#475569] dark:text-slate-300 leading-relaxed">
+                  Decomposed a Flask monolith into an application factory with 5 domain blueprints (18+ REST endpoints); built isolated per-user browser terminals via <code class="font-mono text-xs bg-slate-100 dark:bg-[#0B1120] px-1.5 py-0.5 rounded">Socket.IO</code> and POSIX <code class="font-mono text-xs bg-slate-100 dark:bg-[#0B1120] px-1.5 py-0.5 rounded">pty.fork()</code> with directory-traversal guards; authored rootless shell shims (<code class="font-mono text-xs">oc</code>, <code class="font-mono text-xs">podman</code>, <code class="font-mono text-xs">systemctl</code>) for OpenShift <code class="font-mono text-xs">restricted-v2</code> SCCs; fixed multi-worker Gunicorn JWT 401 failures; automated Docker Buildx CI/CD via GitHub Actions.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">Python</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">Flask</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">Socket.IO</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">RHEL UBI 9</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">OpenShift restricted-v2</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">Docker</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">GitHub Actions</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Footer -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-6 mt-6 border-t border-[#E2E8F0] dark:border-[#1E293B]">
+              <button
+                type="button"
+                onclick="openProjectModal('openquest')"
+                class="inline-flex items-center gap-2 rounded-xl bg-[#143C6E]/10 hover:bg-[#143C6E] text-[#143C6E] hover:text-white dark:bg-[#38BDF8]/15 dark:hover:bg-[#38BDF8] dark:text-[#38BDF8] dark:hover:text-[#0B1120] font-display font-semibold text-xs sm:text-sm px-4 py-2.5 transition-colors cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                </svg>
+                <span>Inspect Architecture</span>
+              </button>
+
+              <a
+                href="https://github.com/JHUB-AFRICA/africa-openshift-deployment"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#475569] dark:text-slate-400 hover:text-[#143C6E] dark:hover:text-[#38BDF8] transition-colors"
+              >
+                <span>GitHub Repo</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT 2: High-Throughput Spatial Simulation Engine -->
+          <article class="flex flex-col justify-between rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6 sm:p-8 hover:border-[#143C6E]/40 dark:hover:border-[#38BDF8]/40 transition-colors">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="font-mono text-xs font-medium text-[#143C6E] dark:text-[#38BDF8] bg-[#143C6E]/8 dark:bg-[#38BDF8]/10 px-2.5 py-1 rounded-lg">
+                  Consultant &bull; Performance Optimization
+                </span>
+                <span class="font-mono text-xs text-[#475569] dark:text-slate-400">2025 &ndash; 2026</span>
+              </div>
+
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-[#0F172A] dark:text-[#F8FAFC] mb-1">
+                High-Throughput Spatial Simulation Engine
+              </h3>
+              <p class="text-xs font-mono text-[#475569] dark:text-slate-400 mb-4">
+                Memory-Bounded Environmental &amp; GIS Migration Model
+              </p>
+
+              <!-- Recruiter Story View -->
+              <div class="lens-recruiter lens-panel space-y-3">
+                <p class="text-sm sm:text-base text-[#475569] dark:text-slate-300 leading-relaxed">
+                  An environmental research team was running multi-year population movement simulations that crashed due to massive satellite map files and took over 4 hours per run. I redesigned how the software reads map data and evaluates locations so researchers can run accurate 48-month scenarios in under 5 minutes on standard hardware.
+                </p>
+                <div class="rounded-xl bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] p-3.5 text-xs sm:text-sm text-[#475569] dark:text-slate-300">
+                  <strong class="text-[#0F172A] dark:text-[#F8FAFC]">Impact:</strong> Cut runtime from 4+ hours to under 5 minutes, kept RAM under 500 MB on gigabyte datasets, and reduced location-lookup CPU load by 99%.
+                </div>
+              </div>
+
+              <!-- Engineering Deep-Dive View -->
+              <div class="lens-engineering lens-panel hidden space-y-3">
+                <p class="text-sm text-[#475569] dark:text-slate-300 leading-relaxed">
+                  Engineered a fail-fast spatial decision pipeline in <code class="font-mono text-xs bg-slate-100 dark:bg-[#0B1120] px-1.5 py-0.5 rounded">Java (Repast Simphony)</code> with Python batch analytics; eliminated <code class="font-mono text-xs bg-slate-100 dark:bg-[#0B1120] px-1.5 py-0.5 rounded">OutOfMemoryError</code> crashes and bounded heap usage at ~500 MB over gigabyte-scale 30m GeoTIFF rasters via <code class="font-mono text-xs">JAI RandomIter</code> tile streaming; cut watershed point-in-polygon CPU cost by 99% using <code class="font-mono text-xs">JTS PreparedGeometry</code> and QuadTree/R-tree spatial indexing.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">Java</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">Repast Simphony</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">JAI RandomIter</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">JTS QuadTree/R-tree</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">Python</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Footer -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-6 mt-6 border-t border-[#E2E8F0] dark:border-[#1E293B]">
+              <button
+                type="button"
+                onclick="openProjectModal('spatial')"
+                class="inline-flex items-center gap-2 rounded-xl bg-[#143C6E]/10 hover:bg-[#143C6E] text-[#143C6E] hover:text-white dark:bg-[#38BDF8]/15 dark:hover:bg-[#38BDF8] dark:text-[#38BDF8] dark:hover:text-[#0B1120] font-display font-semibold text-xs sm:text-sm px-4 py-2.5 transition-colors cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                </svg>
+                <span>Inspect Architecture</span>
+              </button>
+
+              <a
+                href="https://github.com/Movineo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#475569] dark:text-slate-400 hover:text-[#143C6E] dark:hover:text-[#38BDF8] transition-colors"
+              >
+                <span>GitHub Profile</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT 3: AI Agents & Auto-BoQ -->
+          <article class="flex flex-col justify-between rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6 sm:p-8 hover:border-[#143C6E]/40 dark:hover:border-[#38BDF8]/40 transition-colors">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="font-mono text-xs font-medium text-[#143C6E] dark:text-[#38BDF8] bg-[#143C6E]/8 dark:bg-[#38BDF8]/10 px-2.5 py-1 rounded-lg">
+                  AI Engineering &amp; Vision
+                </span>
+                <span class="font-mono text-xs text-[#475569] dark:text-slate-400">2025 &ndash; 2026</span>
+              </div>
+
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-[#0F172A] dark:text-[#F8FAFC] mb-1">
+                AI Agents &amp; Auto-BoQ
+              </h3>
+              <p class="text-xs font-mono text-[#475569] dark:text-slate-400 mb-4">
+                Computer Vision Quantity Surveying &amp; Agentic Workflows
+              </p>
+
+              <!-- Recruiter Story View -->
+              <div class="lens-recruiter lens-panel space-y-3">
+                <p class="text-sm sm:text-base text-[#475569] dark:text-slate-300 leading-relaxed">
+                  Estimating construction materials from architectural drawings usually requires hours of manual measurement, while generic AI chatbots often guess when answering technical questions. I built AI workflows that scan floor-plan images to automatically generate material estimates (Auto-BoQ) and ground document Q&amp;A strictly in verified source files.
+                </p>
+                <div class="rounded-xl bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] p-3.5 text-xs sm:text-sm text-[#475569] dark:text-slate-300">
+                  <strong class="text-[#0F172A] dark:text-[#F8FAFC]">Impact:</strong> Automates blueprint quantity take-offs and pairs multi-modal voice/document parsing with reliable, source-backed AI outputs.
+                </div>
+              </div>
+
+              <!-- Engineering Deep-Dive View -->
+              <div class="lens-engineering lens-panel hidden space-y-3">
+                <p class="text-sm text-[#475569] dark:text-slate-300 leading-relaxed">
+                  Combined <code class="font-mono text-xs bg-slate-100 dark:bg-[#0B1120] px-1.5 py-0.5 rounded">YOLOv8</code> object detection and <code class="font-mono text-xs bg-slate-100 dark:bg-[#0B1120] px-1.5 py-0.5 rounded">OpenCV</code> spatial scaling to detect architectural walls, openings, and zones for automated Bill of Quantities generation; orchestrated multi-step <code class="font-mono text-xs">LangChain</code> agents over <code class="font-mono text-xs">Chroma</code> vector stores with <code class="font-mono text-xs">Gemini</code> and <code class="font-mono text-xs">Whisper</code> ASR pipelines.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">Python</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">OpenCV</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">YOLOv8</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">LangChain</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">Chroma</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">Gemini / Whisper</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Footer -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-6 mt-6 border-t border-[#E2E8F0] dark:border-[#1E293B]">
+              <button
+                type="button"
+                onclick="openProjectModal('ai')"
+                class="inline-flex items-center gap-2 rounded-xl bg-[#143C6E]/10 hover:bg-[#143C6E] text-[#143C6E] hover:text-white dark:bg-[#38BDF8]/15 dark:hover:bg-[#38BDF8] dark:text-[#38BDF8] dark:hover:text-[#0B1120] font-display font-semibold text-xs sm:text-sm px-4 py-2.5 transition-colors cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                </svg>
+                <span>Inspect Architecture</span>
+              </button>
+
+              <a
+                href="https://github.com/Movineo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#475569] dark:text-slate-400 hover:text-[#143C6E] dark:hover:text-[#38BDF8] transition-colors"
+              >
+                <span>GitHub Repos</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT 4: Lipwa & Event-Driven Backends -->
+          <article class="flex flex-col justify-between rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6 sm:p-8 hover:border-[#143C6E]/40 dark:hover:border-[#38BDF8]/40 transition-colors">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="font-mono text-xs font-medium text-[#143C6E] dark:text-[#38BDF8] bg-[#143C6E]/8 dark:bg-[#38BDF8]/10 px-2.5 py-1 rounded-lg">
+                  Fintech &amp; Distributed Systems
+                </span>
+                <span class="font-mono text-xs text-[#475569] dark:text-slate-400">2025 &ndash; 2026</span>
+              </div>
+
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-[#0F172A] dark:text-[#F8FAFC] mb-1">
+                Lipwa &amp; Event-Driven Backends
+              </h3>
+              <p class="text-xs font-mono text-[#475569] dark:text-slate-400 mb-4">
+                Real-Time M-Pesa Daraja Verification &amp; Distributed Microservices
+              </p>
+
+              <!-- Recruiter Story View -->
+              <div class="lens-recruiter lens-panel space-y-3">
+                <p class="text-sm sm:text-base text-[#475569] dark:text-slate-300 leading-relaxed">
+                  Local businesses accepting mobile money need instant payment confirmation, while event platforms face sudden ticket-buying spikes that can cause double bookings. I engineered real-time payment verification services and high-concurrency event backends that confirm transactions safely and prevent overselling during peak demand.
+                </p>
+                <div class="rounded-xl bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] p-3.5 text-xs sm:text-sm text-[#475569] dark:text-slate-300">
+                  <strong class="text-[#0F172A] dark:text-[#F8FAFC]">Impact:</strong> Delivers instant mobile-money reconciliation and prevents race-condition double bookings under burst traffic.
+                </div>
+              </div>
+
+              <!-- Engineering Deep-Dive View -->
+              <div class="lens-engineering lens-panel hidden space-y-3">
+                <p class="text-sm text-[#475569] dark:text-slate-300 leading-relaxed">
+                  Integrated Safaricom M-Pesa Daraja STK Push APIs with idempotent webhook validation in <code class="font-mono text-xs bg-slate-100 dark:bg-[#0B1120] px-1.5 py-0.5 rounded">Python/Django</code> and <code class="font-mono text-xs bg-slate-100 dark:bg-[#0B1120] px-1.5 py-0.5 rounded">Node.js</code>; implemented <code class="font-mono text-xs">Redis</code> atomic inventory locking with cache invalidation and <code class="font-mono text-xs">Apache Kafka</code> event streams for asynchronous ticket fulfillment.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">Python / Django</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">Node.js</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">Apache Kafka</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">Redis</span>
+                  <span class="font-mono text-[11px] bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-slate-200 px-2.5 py-1 rounded-lg">PostgreSQL</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Footer -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-6 mt-6 border-t border-[#E2E8F0] dark:border-[#1E293B]">
+              <button
+                type="button"
+                onclick="openProjectModal('lipwa')"
+                class="inline-flex items-center gap-2 rounded-xl bg-[#143C6E]/10 hover:bg-[#143C6E] text-[#143C6E] hover:text-white dark:bg-[#38BDF8]/15 dark:hover:bg-[#38BDF8] dark:text-[#38BDF8] dark:hover:text-[#0B1120] font-display font-semibold text-xs sm:text-sm px-4 py-2.5 transition-colors cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                </svg>
+                <span>Inspect Architecture</span>
+              </button>
+
+              <a
+                href="https://github.com/Movineo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#475569] dark:text-slate-400 hover:text-[#143C6E] dark:hover:text-[#38BDF8] transition-colors"
+              >
+                <span>GitHub Repos</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 4. EXPERIENCE & CAMPUS LEADERSHIP                                     -->
+    <!-- ===================================================================== -->
+    <section id="experience" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#E2E8F0] dark:border-[#1E293B]">
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-12">
+          <span class="font-mono text-xs font-semibold uppercase tracking-widest text-[#143C6E] dark:text-[#38BDF8]">
+            Track Record
+          </span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight mt-2">
+            Experience &amp; Campus Leadership
+          </h2>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Role 1: Red Hat Academy Student Ambassador -->
+          <div class="rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6 sm:p-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+              <div>
+                <h3 class="font-display text-lg sm:text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                  Red Hat Academy Student Ambassador &mdash; JKUAT
+                </h3>
+                <p class="text-sm font-medium text-[#143C6E] dark:text-[#38BDF8]">
+                  Jomo Kenyatta University of Agriculture and Technology &bull; Nairobi, Kenya
+                </p>
+              </div>
+              <span class="inline-flex items-center self-start sm:self-center font-mono text-xs font-semibold px-3 py-1 rounded-full bg-[#059669]/10 text-[#059669] dark:text-emerald-400">
+                Present
+              </span>
+            </div>
+            <p class="text-sm sm:text-base text-[#475569] dark:text-slate-300 leading-relaxed">
+              Organizing hands-on OpenShift &amp; enterprise Linux bootcamps and building campus open-source communities in partnership with JHUB Africa, mentoring peers on container security, rootless Podman workflows, and Red Hat certification pathways.
+            </p>
+          </div>
+
+          <!-- Role 2: Software Engineering Attaché -->
+          <div class="rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6 sm:p-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+              <div>
+                <h3 class="font-display text-lg sm:text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                  Software Engineering Attach&eacute; (Backend &amp; DevOps) &mdash; JHUB Africa
+                </h3>
+                <p class="text-sm font-medium text-[#143C6E] dark:text-[#38BDF8]">
+                  JHUB Africa Innovation Hub &bull; JKUAT, Nairobi, Kenya
+                </p>
+              </div>
+              <span class="inline-flex items-center self-start sm:self-center font-mono text-xs font-medium px-3 py-1 rounded-full bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#475569] dark:text-slate-300">
+                Jun 2026 &ndash; Aug 2026
+              </span>
+            </div>
+            <p class="text-sm sm:text-base text-[#475569] dark:text-slate-300 leading-relaxed">
+              Co-engineered OpenQuest Enterprise on Red Hat UBI 9 and OpenShift, implementing modular Flask REST APIs, stateless JWT RBAC authentication, isolated WebSocket PTY browser terminals with rootless CLI shims, and automated GitHub Actions Docker Buildx CI/CD pipelines.
+            </p>
+          </div>
+
+          <!-- Role 3: Systems & Backend Engineering Consultant -->
+          <div class="rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6 sm:p-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+              <div>
+                <h3 class="font-display text-lg sm:text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                  Systems &amp; Backend Engineering Consultant &mdash; Environmental &amp; GIS Migration Modelling
+                </h3>
+                <p class="text-sm font-medium text-[#143C6E] dark:text-[#38BDF8]">
+                  Research &amp; Simulation Engineering &bull; Remote, Kenya
+                </p>
+              </div>
+              <span class="inline-flex items-center self-start sm:self-center font-mono text-xs font-medium px-3 py-1 rounded-full bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#475569] dark:text-slate-300">
+                Sep 2025 &ndash; May 2026
+              </span>
+            </div>
+            <p class="text-sm sm:text-base text-[#475569] dark:text-slate-300 leading-relaxed">
+              Built fail-fast spatial simulation pipelines in Java (Repast Simphony), streaming GeoTIFF raster loaders (JAI RandomIter) that eliminated out-of-memory crashes under a ~500 MB RAM budget, QuadTree/R-tree spatial indexing (-99% CPU cost), and automated WKT/Python analysis workflows.
+            </p>
+          </div>
+
+          <!-- Education Card -->
+          <div class="rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6 sm:p-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+              <div>
+                <span class="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#143C6E] dark:text-[#38BDF8]">
+                  Education
+                </span>
+                <h3 class="font-display text-lg sm:text-xl font-bold text-[#0F172A] dark:text-[#F8FAFC] mt-0.5">
+                  B.Sc. Mathematics and Computer Science
+                </h3>
+                <p class="text-sm text-[#475569] dark:text-slate-300">
+                  Jomo Kenyatta University of Agriculture and Technology (JKUAT)
+                </p>
+              </div>
+              <span class="inline-flex items-center self-start sm:self-center font-mono text-xs font-medium px-3 py-1 rounded-full bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#475569] dark:text-slate-300">
+                Expected June 2027
+              </span>
+            </div>
+            <p class="font-mono text-xs text-[#475569] dark:text-slate-400 mt-3">
+              Coursework: Operating Systems &bull; Database Systems &bull; Data Structures &amp; Algorithms &bull; Systems Programming &bull; Computer Networks &bull; Graph Theory &bull; Numerical Analysis
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5. ACTIVE BUILDER LOG                                                 -->
+    <!-- ===================================================================== -->
+    <section id="builder-log" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#E2E8F0] dark:border-[#1E293B]">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+          <div>
+            <div class="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-widest text-[#059669] dark:text-emerald-400">
+              <span class="w-2 h-2 rounded-full bg-[#059669]"></span>
+              <span>Current Focus</span>
+            </div>
+            <h2 class="font-display text-2xl sm:text-4xl font-bold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight mt-2">
+              Active Builder Log
+            </h2>
+          </div>
+          <p class="font-mono text-xs text-[#475569] dark:text-slate-400">
+            Updated Q4 2026 &bull; Nairobi, Kenya
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] divide-y divide-[#E2E8F0] dark:divide-[#1E293B]">
+          <!-- Log Entry 1 -->
+          <div class="p-6 sm:p-7 flex flex-col sm:flex-row sm:items-start gap-4">
+            <span class="font-mono text-xs font-semibold text-[#143C6E] dark:text-[#38BDF8] bg-[#143C6E]/8 dark:bg-[#38BDF8]/10 px-3 py-1 rounded-lg self-start shrink-0">
+              [CLOUD &amp; COMMUNITY]
+            </span>
+            <div>
+              <h3 class="font-display text-base sm:text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                Leading Red Hat Academy Student Workshops at JKUAT &amp; JHUB Africa
+              </h3>
+              <p class="text-sm text-[#475569] dark:text-slate-300 mt-1.5 leading-relaxed">
+                Designing and facilitating hands-on OpenShift, RHEL UBI 9, and rootless Podman lab sessions to help university developers transition from classroom theory to production cloud workflows.
+              </p>
+            </div>
+          </div>
+
+          <!-- Log Entry 2 -->
+          <div class="p-6 sm:p-7 flex flex-col sm:flex-row sm:items-start gap-4">
+            <span class="font-mono text-xs font-semibold text-[#059669] dark:text-emerald-400 bg-[#059669]/10 px-3 py-1 rounded-lg self-start shrink-0">
+              [MATH &amp; DATA]
+            </span>
+            <div>
+              <h3 class="font-display text-base sm:text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                Developing a Stochastic Network Systemic Risk Framework for 176 Kenyan SACCOs
+              </h3>
+              <p class="text-sm text-[#475569] dark:text-slate-300 mt-1.5 leading-relaxed">
+                Built a multi-year Python regulatory extraction pipeline across 5 years of SASRA supervision reports and modeling contagion propagation and intervention optimization with NetworkX and statsmodels.
+              </p>
+            </div>
+          </div>
+
+          <!-- Log Entry 3 -->
+          <div class="p-6 sm:p-7 flex flex-col sm:flex-row sm:items-start gap-4">
+            <span class="font-mono text-xs font-semibold text-[#143C6E] dark:text-[#38BDF8] bg-[#143C6E]/8 dark:bg-[#38BDF8]/10 px-3 py-1 rounded-lg self-start shrink-0">
+              [AI &amp; AGENTS]
+            </span>
+            <div>
+              <h3 class="font-display text-base sm:text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                Building Multi-Step AI Agent Pipelines with Grounded Retrieval &amp; Schema Verification
+              </h3>
+              <p class="text-sm text-[#475569] dark:text-slate-300 mt-1.5 leading-relaxed">
+                Exploring tool-calling agent architectures, Chroma vector RAG grounding, and deterministic output validation harnesses for document intelligence and automated engineering workflows.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 6. TECHNICAL STACK MATRIX                                             -->
+    <!-- ===================================================================== -->
+    <section id="stack" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#E2E8F0] dark:border-[#1E293B]">
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-12">
+          <span class="font-mono text-xs font-semibold uppercase tracking-widest text-[#143C6E] dark:text-[#38BDF8]">
+            Capabilities
+          </span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight mt-2">
+            Technical Stack Matrix
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- 1. Languages -->
+          <div class="rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6">
+            <h3 class="font-display text-xs font-bold uppercase tracking-wider text-[#143C6E] dark:text-[#38BDF8] mb-4">
+              Languages
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Python</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Java</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">TypeScript</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">JavaScript</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">SQL</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Bash</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">C</span>
+            </div>
+          </div>
+
+          <!-- 2. Backend & Distributed Systems -->
+          <div class="rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6">
+            <h3 class="font-display text-xs font-bold uppercase tracking-wider text-[#143C6E] dark:text-[#38BDF8] mb-4">
+              Backend &amp; Distributed Systems
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Flask</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Django</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Spring Boot</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Node.js/Express</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Apache Kafka</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Redis</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">REST</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">WebSockets</span>
+            </div>
+          </div>
+
+          <!-- 3. Cloud & DevOps -->
+          <div class="rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6">
+            <h3 class="font-display text-xs font-bold uppercase tracking-wider text-[#143C6E] dark:text-[#38BDF8] mb-4">
+              Cloud &amp; DevOps
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Red Hat OpenShift</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">RHEL UBI 9</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Docker</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Podman</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Kubernetes</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">GitHub Actions</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Linux</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">Nginx</span>
+            </div>
+          </div>
+
+          <!-- 4. AI & Data Engineering -->
+          <div class="rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6">
+            <h3 class="font-display text-xs font-bold uppercase tracking-wider text-[#143C6E] dark:text-[#38BDF8] mb-4">
+              AI &amp; Data Engineering
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">LangChain</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">RAG</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">OpenCV</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">YOLOv8</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">pandas</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">NetworkX</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">JTS/Spatial Indexing</span>
+            </div>
+          </div>
+
+          <!-- 5. Databases & Security -->
+          <div class="rounded-2xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-6 md:col-span-2 lg:col-span-2">
+            <h3 class="font-display text-xs font-bold uppercase tracking-wider text-[#143C6E] dark:text-[#38BDF8] mb-4">
+              Databases &amp; Security
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">PostgreSQL</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">MySQL</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">SQLite</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">JWT/RBAC</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">scrypt</span>
+              <span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">JVM Memory Tuning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- 7. CLEAN CONTACT & FOOTER SECTION                                     -->
+  <!-- ===================================================================== -->
+  <footer id="contact" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#FAF9F6] dark:bg-[#0B1120]">
+    <div class="max-w-6xl mx-auto">
+      <div class="rounded-3xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] p-7 sm:p-12">
+        <div class="max-w-3xl">
+          <span class="font-mono text-xs font-semibold uppercase tracking-widest text-[#059669] dark:text-emerald-400">
+            Get In Touch
+          </span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight mt-2 mb-4">
+            Ready to Contribute to Your Engineering Team
+          </h2>
+          <p class="text-sm sm:text-base text-[#475569] dark:text-slate-300 leading-relaxed mb-8">
+            Reach out directly for software development, backend systems, cloud-native DevOps, or AI engineering opportunities—or grab a quick summary to share with your hiring team.
+          </p>
+
+          <!-- Direct Contact Links -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+            <a
+              href="mailto:movineee@gmail.com"
+              class="flex flex-col rounded-xl bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] p-3.5 hover:border-[#143C6E] dark:hover:border-[#38BDF8] transition-colors"
+            >
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#475569] dark:text-slate-400">Email</span>
+              <span class="font-mono text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] mt-1 truncate">movineee@gmail.com</span>
+            </a>
+
+            <a
+              href="tel:+254795410486"
+              class="flex flex-col rounded-xl bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] p-3.5 hover:border-[#143C6E] dark:hover:border-[#38BDF8] transition-colors"
+            >
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#475569] dark:text-slate-400">Phone</span>
+              <span class="font-mono text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] mt-1">+254 795 410 486</span>
+            </a>
+
+            <a
+              href="https://github.com/Movineo"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex flex-col rounded-xl bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] p-3.5 hover:border-[#143C6E] dark:hover:border-[#38BDF8] transition-colors"
+            >
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#475569] dark:text-slate-400">GitHub</span>
+              <span class="font-mono text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] mt-1 truncate">github.com/Movineo</span>
+            </a>
+
+            <a
+              href="https://linkedin.com/in/movine-odhiambo"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex flex-col rounded-xl bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] p-3.5 hover:border-[#143C6E] dark:hover:border-[#38BDF8] transition-colors"
+            >
+              <span class="font-mono text-[10px] uppercase tracking-wider text-[#475569] dark:text-slate-400">LinkedIn</span>
+              <span class="font-mono text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] mt-1 truncate">in/movine-odhiambo</span>
+            </a>
+          </div>
+
+          <!-- Primary Copy Email Button & Subtle Secondary Summary Copy Button -->
+          <div class="flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onclick="copyTextToClipboard('movineee@gmail.com', 'Copied movineee@gmail.com to clipboard', this)"
+              class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#143C6E] hover:bg-[#1D4ED8] dark:bg-[#38BDF8] dark:hover:bg-sky-300 text-white dark:text-[#0B1120] font-display font-semibold text-sm px-5 py-3 shadow-xs transition-colors cursor-pointer"
+            >
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+              </svg>
+              <span class="btn-label">Copy Email</span>
+            </button>
+
+            <button
+              type="button"
+              onclick="copyHiringManagerSummary(this)"
+              class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#FAF9F6] dark:bg-[#0B1120] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#475569] hover:text-[#0F172A] dark:text-slate-300 dark:hover:text-[#F8FAFC] font-display font-medium text-sm px-4 py-3 border border-[#E2E8F0] dark:border-[#1E293B] transition-colors cursor-pointer"
+            >
+              <svg class="w-4 h-4 shrink-0 text-[#143C6E] dark:text-[#38BDF8]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+              <span class="btn-label">Copy Summary for Hiring Manager</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Copyright Bar -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-[#475569] dark:text-slate-400 mt-8 pt-6 border-t border-[#E2E8F0] dark:border-[#1E293B]">
+        <p>&copy; <span id="current-year"></span> Movine Odhiambo &bull; Software Developer &amp; Systems Engineer</p>
+        <p>Nairobi, Kenya &bull; Remote Ready</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- INTERACTIVE ARCHITECTURE MODAL DRAWER                                 -->
+  <!-- ===================================================================== -->
+  <div id="case-study-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" class="modal-backdrop fixed inset-0 z-50 hidden opacity-0 bg-slate-950/70 backdrop-blur-xs overflow-y-auto p-4 sm:p-6 lg:p-10">
+    <div class="min-h-full flex items-center justify-center">
+      <div id="case-study-panel" class="modal-panel w-full max-w-3xl rounded-3xl bg-[#FFFFFF] dark:bg-[#111827] border border-[#E2E8F0] dark:border-[#1E293B] shadow-2xl overflow-hidden transform scale-95 opacity-0">
+        <!-- Modal Header -->
+        <div class="flex items-start justify-between gap-4 px-6 py-5 sm:px-8 sm:py-6 border-b border-[#E2E8F0] dark:border-[#1E293B] bg-[#FAF9F6] dark:bg-[#0B1120]">
+          <div>
+            <span id="modal-category" class="font-mono text-xs font-semibold uppercase tracking-wider text-[#143C6E] dark:text-[#38BDF8]">
+              System Architecture
+            </span>
+            <h3 id="modal-title" class="font-display text-xl sm:text-2xl font-bold text-[#0F172A] dark:text-[#F8FAFC] mt-1">
+              Project Title
+            </h3>
+          </div>
+          <button
+            id="modal-close-btn"
+            type="button"
+            onclick="closeProjectModal()"
+            aria-label="Close Architecture Modal"
+            class="p-2.5 rounded-xl bg-[#FFFFFF] dark:bg-[#111827] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#475569] dark:text-slate-300 border border-[#E2E8F0] dark:border-[#1E293B] transition-colors cursor-pointer"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="px-6 py-6 sm:px-8 sm:py-7 space-y-6 max-h-[78vh] overflow-y-auto">
+          <!-- Custom Inline SVG Architecture Diagram -->
+          <div>
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#475569] dark:text-slate-400">
+                System Architecture Diagram
+              </span>
+              <span id="modal-diagram-badge" class="font-mono text-[11px] text-[#059669] dark:text-emerald-400">
+                Production Topology
+              </span>
+            </div>
+            <div id="modal-svg-container" class="rounded-2xl bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] p-4 overflow-x-auto">
+              <!-- Dynamic SVG injected via JS -->
+            </div>
+          </div>
+
+          <!-- Key Engineering Metrics -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="rounded-2xl bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] p-4">
+              <h4 class="font-display text-xs font-bold uppercase tracking-wider text-[#475569] dark:text-slate-400 mb-1.5">
+                Engineering Challenge
+              </h4>
+              <p id="modal-problem" class="text-sm text-[#475569] dark:text-slate-300 leading-relaxed"></p>
+            </div>
+            <div class="rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-900/50 p-4">
+              <h4 class="font-display text-xs font-bold uppercase tracking-wider text-[#059669] dark:text-emerald-400 mb-1.5">
+                Key Engineering Metrics
+              </h4>
+              <p id="modal-outcome" class="text-sm text-[#0F172A] dark:text-[#F8FAFC] leading-relaxed font-medium"></p>
+            </div>
+          </div>
+
+          <!-- Architectural Decisions -->
+          <div>
+            <h4 class="font-display text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] mb-3">
+              Architectural Decisions &amp; Implementation
+            </h4>
+            <ul id="modal-tradeoffs" class="space-y-2.5 text-sm text-[#475569] dark:text-slate-300">
+              <!-- Populated dynamically -->
+            </ul>
+          </div>
+
+          <!-- Stack Tags & GitHub Link -->
+          <div class="pt-4 border-t border-[#E2E8F0] dark:border-[#1E293B] flex flex-wrap items-center justify-between gap-4">
+            <div id="modal-tags" class="flex flex-wrap gap-1.5"></div>
+            <a
+              id="modal-repo-link"
+              href="https://github.com/Movineo"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-xl bg-[#143C6E] hover:bg-[#1D4ED8] dark:bg-[#38BDF8] dark:hover:bg-sky-300 text-white dark:text-[#0B1120] font-display font-semibold text-xs sm:text-sm px-4 py-2.5 transition-colors"
+            >
+              <span id="modal-repo-label">View on GitHub</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT INTERACTIVITY                                              -->
+  <!-- ===================================================================== -->
+  <script>
+    // Populate current copyright year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Persisted Light / Dark Mode Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      try {
+        localStorage.setItem('movine_portfolio_theme', isDark ? 'dark' : 'light');
+      } catch (err) {
+        // Ignore storage errors in restricted contexts
+      }
+    });
+
+    // Mobile Navigation Menu
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+      const expanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      mobileMenuBtn.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Toast Notification Controller
+    let toastTimer = null;
+    function showToast(message) {
+      const toast = document.getElementById('toast-banner');
+      const msgEl = document.getElementById('toast-message');
+      if (!toast || !msgEl) return;
+
+      msgEl.textContent = message;
+      toast.classList.remove('opacity-0', 'translate-y-3', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-3', 'pointer-events-none');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 3200);
+    }
+
+    // Reliable Clipboard Helper (uses document.execCommand for iFrame compatibility)
+    function copyTextToClipboard(text, toastMessage, buttonEl) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      try {
+        document.execCommand('copy');
+      } catch (err) {
+        // Handled silently
+      } finally {
+        document.body.removeChild(textarea);
+      }
+
+      if (buttonEl) {
+        const label = buttonEl.querySelector('.btn-label');
+        if (label) {
+          const original = label.textContent;
+          label.textContent = 'Copied!';
+          setTimeout(() => {
+            label.textContent = original;
+          }, 2000);
+        }
+      }
+
+      showToast(toastMessage);
+    }
+
+    // Copies the 4-line hiring manager summary without rendering it on the page
+    function copyHiringManagerSummary(buttonEl) {
+      const summary =
+        'Movine Odhiambo — Software Developer & Systems Engineer (Nairobi / Remote).\n' +
+        'Built a self-hosted Red Hat OpenShift & UBI 9 cloud training platform (25 live labs) at JHUB Africa and cut a multi-hour Java spatial simulation down to minutes with 99% less CPU overhead.\n' +
+        'Experienced across Python, Java, TypeScript, Docker/OpenShift, Kafka/Redis, and RAG/AI agent pipelines.\n' +
+        'GitHub: github.com/Movineo | LinkedIn: linkedin.com/in/movine-odhiambo | movineee@gmail.com';
+
+      copyTextToClipboard(summary, 'Summary for hiring manager copied to clipboard', buttonEl);
+    }
+
+    // Dual-Lens Switcher: Recruiter Story vs. Engineering Deep-Dive
+    function setLensMode(mode) {
+      const recruiterPanels = document.querySelectorAll('.lens-recruiter');
+      const engineeringPanels = document.querySelectorAll('.lens-engineering');
+      const btnRecruiter = document.getElementById('btn-mode-recruiter');
+      const btnEngineering = document.getElementById('btn-mode-engineering');
+
+      const activeClasses = ['bg-[#FFFFFF]', 'dark:bg-[#1E293B]', 'text-[#0F172A]', 'dark:text-[#F8FAFC]', 'shadow-xs'];
+      const inactiveClasses = ['text-[#475569]', 'dark:text-slate-400', 'hover:text-[#0F172A]', 'dark:hover:text-[#F8FAFC]'];
+
+      if (mode === 'engineering') {
+        recruiterPanels.forEach((el) => el.classList.add('hidden'));
+        engineeringPanels.forEach((el) => el.classList.remove('hidden'));
+
+        btnEngineering.setAttribute('aria-pressed', 'true');
+        btnRecruiter.setAttribute('aria-pressed', 'false');
+
+        btnEngineering.classList.add(...activeClasses);
+        btnEngineering.classList.remove(...inactiveClasses);
+        btnRecruiter.classList.remove(...activeClasses);
+        btnRecruiter.classList.add(...inactiveClasses);
+      } else {
+        engineeringPanels.forEach((el) => el.classList.add('hidden'));
+        recruiterPanels.forEach((el) => el.classList.remove('hidden'));
+
+        btnRecruiter.setAttribute('aria-pressed', 'true');
+        btnEngineering.setAttribute('aria-pressed', 'false');
+
+        btnRecruiter.classList.add(...activeClasses);
+        btnRecruiter.classList.remove(...inactiveClasses);
+        btnEngineering.classList.remove(...activeClasses);
+        btnEngineering.classList.add(...inactiveClasses);
+      }
+    }
+
+    // Interactive Architecture Case Study Modal Data
+    const CASE_STUDIES = {
+      openquest: {
+        category: 'JHUB Africa • Cloud-Native Training Platform',
+        title: 'OpenQuest Enterprise — System Architecture',
+        diagramBadge: 'OpenShift restricted-v2 Topology',
+        problem: 'Delivering 25 hands-on enterprise Linux and OpenShift labs directly in student browsers without privileged container permissions or multi-worker session drops.',
+        outcome: '25 interactive missions, 5 modular API blueprints (18+ REST endpoints), zero multi-worker Gunicorn JWT 401 errors, and automated Docker Buildx CI/CD rollouts.',
+        tradeoffs: [
+          'Modular Application Factory: Refactored a Flask monolith into 5 isolated blueprints so 5 engineers could develop features concurrently.',
+          'Rootless PTY Sandboxing: Built WebSocket browser terminals via Flask-SocketIO + POSIX pty.fork() with path-traversal guards and custom rootless CLI shims (oc, podman, systemctl) compliant with OpenShift restricted-v2 SCCs.',
+          'Deterministic Multi-Worker JWT & Certificate Security: Replaced per-worker random secret keys with a shared deterministic signing secret and enforced server-side completion verification on SHA-256 certificate endpoints.'
+        ],
+        tags: ['Python', 'Flask', 'Socket.IO', 'RHEL UBI 9', 'OpenShift restricted-v2', 'Docker', 'GitHub Actions'],
+        repoUrl: 'https://github.com/JHUB-AFRICA/africa-openshift-deployment',
+        repoLabel: 'View GitHub Repository',
+        svg: `
+          <svg viewBox="0 0 720 220" class="w-full h-auto" role="img" aria-label="OpenQuest Enterprise Architecture Diagram">
+            <defs>
+              <marker id="arrow-oq" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#143C6E" />
+              </marker>
+            </defs>
+            <rect x="16" y="45" width="145" height="130" rx="12" fill="#FFFFFF" stroke="#143C6E" stroke-width="1.8" />
+            <text x="88" y="75" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700" fill="#0F172A">Learner Browser</text>
+            <text x="88" y="96" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">xterm.js Terminal</text>
+            <text x="88" y="114" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">REST + Socket.IO</text>
+            <rect x="34" y="132" width="108" height="24" rx="6" fill="#EFF6FF" />
+            <text x="88" y="148" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="600" fill="#143C6E">JWT RBAC</text>
+
+            <line x1="161" y1="110" x2="215" y2="110" stroke="#143C6E" stroke-width="1.8" marker-end="url(#arrow-oq)" />
+
+            <rect x="222" y="18" width="482" height="184" rx="14" fill="#EFF6FF" fill-opacity="0.5" stroke="#143C6E" stroke-dasharray="5 4" stroke-width="1.5" />
+            <text x="238" y="38" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#143C6E">OPENSHIFT / RHEL UBI 9 CONTAINER (restricted-v2 SCC)</text>
+
+            <rect x="240" y="54" width="190" height="130" rx="12" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5" />
+            <text x="335" y="78" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700" fill="#0F172A">Flask App Factory</text>
+            <text x="335" y="98" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">5 Blueprints (18+ Routes)</text>
+            <text x="335" y="116" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">3-Tier Mission Validator</text>
+            <text x="335" y="134" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#059669">SHA-256 Cert Engine</text>
+            <text x="335" y="160" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#64748B">Gunicorn + SQLite</text>
+
+            <line x1="430" y1="118" x2="480" y2="118" stroke="#143C6E" stroke-width="1.8" marker-end="url(#arrow-oq)" />
+
+            <rect x="488" y="54" width="198" height="130" rx="12" fill="#FFFFFF" stroke="#059669" stroke-width="1.8" />
+            <text x="587" y="78" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700" fill="#0F172A">Isolated PTY Sandbox</text>
+            <text x="587" y="98" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">POSIX pty.fork() Per User</text>
+            <text x="587" y="116" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">Rootless CLI Shims:</text>
+            <text x="587" y="134" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#059669">oc | podman | systemctl</text>
+            <text x="587" y="160" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#64748B">Traversal Guard Enforced</text>
+          </svg>
+        `
+      },
+      spatial: {
+        category: 'Consultant • Environmental & GIS Migration Modelling',
+        title: 'High-Throughput Spatial Simulation Engine — Architecture',
+        diagramBadge: 'Streaming Raster & Spatial Index Pipeline',
+        problem: 'Simulating 1,000+ autonomous agents over 48 months against gigabyte-scale 30m satellite GeoTIFF rasters caused OutOfMemoryError crashes and took 4+ hours per run.',
+        outcome: 'Runtime reduced from 4+ hours to <5 minutes, memory held at ~500 MB on gigabyte rasters, and watershed point-in-polygon CPU cost cut by 99%.',
+        tradeoffs: [
+          'Tile-Level Raster Streaming: Replaced full-image heap loading with Java Advanced Imaging (RandomIter) window streaming so multi-gigabyte rasters run inside a ~500 MB heap.',
+          'QuadTree & R-tree Spatial Indexing: Combined JTS PreparedGeometry with bounding-box pruning to skip 99% of brute-force geometric intersection checks.',
+          'Fail-Fast Agent Pipeline & Headless Batch Export: Short-circuited invalid movement candidates early and automated WKT/CSV output generation for Python and QGIS.'
+        ],
+        tags: ['Java', 'Repast Simphony', 'JAI RandomIter', 'JTS QuadTree/R-tree', 'Python'],
+        repoUrl: 'https://github.com/Movineo',
+        repoLabel: 'Explore GitHub Profile',
+        svg: `
+          <svg viewBox="0 0 720 220" class="w-full h-auto" role="img" aria-label="Spatial Simulation Engine Architecture Diagram">
+            <defs>
+              <marker id="arrow-sp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#143C6E" />
+              </marker>
+            </defs>
+            <rect x="16" y="34" width="160" height="152" rx="12" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5" />
+            <text x="96" y="60" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700" fill="#0F172A">Geospatial Inputs</text>
+            <text x="96" y="84" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">30m Satellite GeoTIFFs</text>
+            <text x="96" y="102" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">(Multi-GB Rasters)</text>
+            <line x1="34" y1="116" x2="158" y2="116" stroke="#E2E8F0" stroke-width="1" />
+            <text x="96" y="136" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">Watershed Polygons</text>
+            <text x="96" y="154" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">1,000+ Agents (48 Mos)</text>
+
+            <line x1="176" y1="110" x2="228" y2="110" stroke="#143C6E" stroke-width="1.8" marker-end="url(#arrow-sp)" />
+
+            <rect x="236" y="24" width="250" height="172" rx="14" fill="#EFF6FF" fill-opacity="0.55" stroke="#143C6E" stroke-width="1.8" />
+            <text x="361" y="48" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700" fill="#143C6E">Java Simulation Core</text>
+            <rect x="252" y="60" width="218" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" />
+            <text x="361" y="81" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#0F172A">JAI RandomIter (~500 MB RAM)</text>
+            <rect x="252" y="102" width="218" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" />
+            <text x="361" y="123" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#059669">JTS QuadTree/R-tree (-99% CPU)</text>
+            <rect x="252" y="144" width="218" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" />
+            <text x="361" y="165" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#0F172A">Fail-Fast Decision Pipeline</text>
+
+            <line x1="486" y1="110" x2="536" y2="110" stroke="#143C6E" stroke-width="1.8" marker-end="url(#arrow-sp)" />
+
+            <rect x="544" y="34" width="160" height="152" rx="12" fill="#FFFFFF" stroke="#059669" stroke-width="1.8" />
+            <text x="624" y="60" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700" fill="#0F172A">Batch Analytics</text>
+            <text x="624" y="86" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">Headless CLI Pipeline</text>
+            <text x="624" y="106" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">WKT Trajectory Export</text>
+            <text x="624" y="126" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">Python &amp; QGIS Ready</text>
+            <rect x="562" y="142" width="124" height="26" rx="6" fill="#ECFDF5" />
+            <text x="624" y="159" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#059669">4 hrs &rarr; &lt;5 mins</text>
+          </svg>
+        `
+      },
+      ai: {
+        category: 'AI Engineering & Applied Computer Vision',
+        title: 'AI Agents & Auto-BoQ — System Architecture',
+        diagramBadge: 'Vision Detection + Grounded RAG Pipeline',
+        problem: 'Manual construction quantity take-offs from architectural floor plans are slow and repetitive, while ungrounded LLMs hallucinate technical quantities.',
+        outcome: 'Automated architectural element extraction (YOLOv8 + OpenCV) into structured Bill of Quantities schedules alongside source-cited Chroma RAG and Whisper multi-modal agents.',
+        tradeoffs: [
+          'Hybrid Vision + Deterministic Scaling: Used YOLOv8 and OpenCV contour detection to identify structural components, then applied deterministic scale calibration for accurate quantity schedules.',
+          'Grounded Chroma Vector Retrieval: Orchestrated LangChain retrieval pipelines so answers cite verified document chunks rather than ungrounded model guesses.',
+          'Multi-Modal Ingestion: Paired Whisper voice transcription with structured output validation to convert field recordings and drawings into clean tabular outputs.'
+        ],
+        tags: ['Python', 'OpenCV', 'YOLOv8', 'LangChain', 'Chroma', 'Gemini/Whisper'],
+        repoUrl: 'https://github.com/Movineo',
+        repoLabel: 'Explore AI Repositories',
+        svg: `
+          <svg viewBox="0 0 720 220" class="w-full h-auto" role="img" aria-label="AI Agents and Auto-BoQ Architecture Diagram">
+            <defs>
+              <marker id="arrow-ai" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#143C6E" />
+              </marker>
+            </defs>
+            <rect x="16" y="28" width="164" height="164" rx="12" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5" />
+            <text x="98" y="54" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700" fill="#0F172A">Multi-Modal Inputs</text>
+            <rect x="30" y="68" width="136" height="30" rx="6" fill="#EFF6FF" />
+            <text x="98" y="87" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#143C6E">Floor Plan Drawings</text>
+            <rect x="30" y="106" width="136" height="30" rx="6" fill="#FAF9F6" stroke="#E2E8F0" />
+            <text x="98" y="125" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">Technical Documents</text>
+            <rect x="30" y="144" width="136" height="30" rx="6" fill="#FAF9F6" stroke="#E2E8F0" />
+            <text x="98" y="163" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">Voice Field Notes</text>
+
+            <line x1="180" y1="110" x2="230" y2="110" stroke="#143C6E" stroke-width="1.8" marker-end="url(#arrow-ai)" />
+
+            <rect x="238" y="24" width="246" height="172" rx="14" fill="#EFF6FF" fill-opacity="0.55" stroke="#143C6E" stroke-width="1.8" />
+            <text x="361" y="48" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700" fill="#143C6E">Vision &amp; Agent Pipeline</text>
+            <rect x="254" y="60" width="214" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" />
+            <text x="361" y="81" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#0F172A">YOLOv8 + OpenCV Detector</text>
+            <rect x="254" y="102" width="214" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" />
+            <text x="361" y="123" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#0F172A">LangChain + Chroma RAG</text>
+            <rect x="254" y="144" width="214" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" />
+            <text x="361" y="165" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#059669">Gemini / Whisper ASR</text>
+
+            <line x1="484" y1="110" x2="534" y2="110" stroke="#143C6E" stroke-width="1.8" marker-end="url(#arrow-ai)" />
+
+            <rect x="542" y="28" width="162" height="164" rx="12" fill="#FFFFFF" stroke="#059669" stroke-width="1.8" />
+            <text x="623" y="54" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700" fill="#0F172A">Structured Outputs</text>
+            <text x="623" y="84" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#059669" font-weight="600">Auto-BoQ Schedules</text>
+            <text x="623" y="104" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">Material Quantities</text>
+            <line x1="560" y1="118" x2="686" y2="118" stroke="#E2E8F0" stroke-width="1" />
+            <text x="623" y="140" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">Grounded Citations</text>
+            <text x="623" y="160" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#475569">Validated JSON Tasks</text>
+          </svg>
+        `
+      },
+      lipwa: {
+        category: 'Fintech & Distributed Microservices',
+        title: 'Lipwa & Event-Driven Backends — System Architecture',
+        diagramBadge: 'Idempotent Webhook & Kafka Stream Topology',
+        problem: 'Mobile-money merchant checkouts and flash-sale event ticketing face duplicate callback retries and race conditions during sudden traffic spikes.',
+        outcome: 'Idempotent M-Pesa Daraja payment verification, atomic Redis inventory locking, and asynchronous Apache Kafka fulfillment with zero double-bookings.',
+        tradeoffs: [
+          'Idempotent Daraja Webhook Reconciliation: Keyed Safaricom STK Push callbacks by CheckoutRequestID so duplicate network retries never double-credit transactions.',
+          'Atomic Redis Inventory Locking: Protected concurrent ticket reservations with Redis TTL locks and immediate event-driven cache invalidation.',
+          'Kafka Asynchronous Consumers: Decoupled QR ticket generation and merchant notifications onto Apache Kafka topics to keep checkout API latency low.'
+        ],
+        tags: ['Python/Django', 'Node.js', 'Apache Kafka', 'Redis', 'PostgreSQL'],
+        repoUrl: 'https://github.com/Movineo',
+        repoLabel: 'Explore Backend Repos',
+        svg: `
+          <svg viewBox="0 0 720 220" class="w-full h-auto" role="img" aria-label="Lipwa and Event-Driven Backends Architecture Diagram">
+            <defs>
+              <marker id="arrow-lp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#143C6E" />
+              </marker>
+            </defs>
+            <rect x="16" y="28" width="160" height="74" rx="12" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5" />
+            <text x="96" y="55" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="700" fill="#0F172A">Client &amp; Merchant</text>
+            <text x="96" y="76" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#475569">Checkout &amp; Ticket Hold</text>
+
+            <rect x="16" y="118" width="160" height="74" rx="12" fill="#ECFDF5" stroke="#059669" stroke-width="1.6" />
+            <text x="96" y="145" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="700" fill="#059669">M-Pesa Daraja API</text>
+            <text x="96" y="166" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#065F46">STK Push + Callback</text>
+
+            <line x1="176" y1="65" x2="232" y2="95" stroke="#143C6E" stroke-width="1.8" marker-end="url(#arrow-lp)" />
+            <line x1="176" y1="155" x2="232" y2="125" stroke="#059669" stroke-width="1.8" marker-end="url(#arrow-lp)" />
+
+            <rect x="240" y="34" width="225" height="152" rx="14" fill="#EFF6FF" fill-opacity="0.55" stroke="#143C6E" stroke-width="1.8" />
+            <text x="352" y="60" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700" fill="#143C6E">Django / Node.js API</text>
+            <rect x="256" y="74" width="193" height="32" rx="8" fill="#FFFFFF" stroke="#CBD5E1" />
+            <text x="352" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#0F172A">Idempotent Callback Guard</text>
+            <rect x="256" y="114" width="193" height="32" rx="8" fill="#FFFFFF" stroke="#CBD5E1" />
+            <text x="352" y="134" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#059669">Redis Atomic Seat Lock</text>
+            <text x="352" y="168" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#475569">PostgreSQL Ledger</text>
+
+            <line x1="465" y1="110" x2="516" y2="110" stroke="#143C6E" stroke-width="1.8" marker-end="url(#arrow-lp)" />
+
+            <rect x="524" y="34" width="180" height="152" rx="12" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5" />
+            <text x="614" y="60" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700" fill="#0F172A">Apache Kafka Bus</text>
+            <text x="614" y="88" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#475569">&bull; Ticket Issuance</text>
+            <text x="614" y="110" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#475569">&bull; Merchant Receipts</text>
+            <text x="614" y="132" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#475569">&bull; Cache Invalidation</text>
+            <text x="614" y="162" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="600" fill="#059669">Zero Double-Bookings</text>
+          </svg>
+        `
+      }
+    };
+
+    let lastFocusedElement = null;
+
+    function openProjectModal(projectKey) {
+      const data = CASE_STUDIES[projectKey];
+      if (!data) return;
+
+      lastFocusedElement = document.activeElement;
+
+      document.getElementById('modal-category').textContent = data.category;
+      document.getElementById('modal-title').textContent = data.title;
+      document.getElementById('modal-diagram-badge').textContent = data.diagramBadge;
+      document.getElementById('modal-svg-container').innerHTML = data.svg;
+      document.getElementById('modal-problem').textContent = data.problem;
+      document.getElementById('modal-outcome').textContent = data.outcome;
+
+      const tradeoffsList = document.getElementById('modal-tradeoffs');
+      tradeoffsList.innerHTML = data.tradeoffs
+        .map(
+          (item) => `
+          <li class="flex items-start gap-2.5">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#143C6E] dark:bg-[#38BDF8] shrink-0"></span>
+            <span>${item}</span>
+          </li>`
+        )
+        .join('');
+
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = data.tags
+        .map(
+          (tag) =>
+            `<span class="font-mono text-xs bg-[#FAF9F6] dark:bg-[#0B1120] border border-[#E2E8F0] dark:border-[#1E293B] text-[#0F172A] dark:text-[#F8FAFC] px-2.5 py-1 rounded-lg">${tag}</span>`
+        )
+        .join('');
+
+      const repoLink = document.getElementById('modal-repo-link');
+      repoLink.href = data.repoUrl;
+      document.getElementById('modal-repo-label').textContent = data.repoLabel;
+
+      const modal = document.getElementById('case-study-modal');
+      const panel = document.getElementById('case-study-panel');
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0');
+        panel.classList.remove('scale-95', 'opacity-0');
+        panel.classList.add('scale-100', 'opacity-100');
+      });
+
+      document.getElementById('modal-close-btn').focus();
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('case-study-modal');
+      const panel = document.getElementById('case-study-panel');
+      if (!modal || modal.classList.contains('hidden')) return;
+
+      modal.classList.add('opacity-0');
+      panel.classList.remove('scale-100', 'opacity-100');
+      panel.classList.add('scale-95', 'opacity-0');
+
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+        if (lastFocusedElement) lastFocusedElement.focus();
+      }, 220);
+    }
+
+    // Close modal when clicking backdrop or pressing Escape
+    document.getElementById('case-study-modal').addEventListener('click', (event) => {
+      if (event.target.id === 'case-study-modal') {
+        closeProjectModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeProjectModal();
+      }
+    });
+  </script>
+</body>
+</html>
